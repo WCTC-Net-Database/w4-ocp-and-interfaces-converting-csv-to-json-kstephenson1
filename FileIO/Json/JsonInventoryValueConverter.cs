@@ -3,33 +3,24 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using w4_assignment_ksteph.Inventories;
 
-namespace w4_assignment_ksteph.FileIO.Json
+namespace w4_assignment_ksteph.FileIO.Json;
+
+public class JsonInventoryValueConverter : JsonConverterFactory
 {
-    public class JsonInventoryValueConverter : JsonConverterFactory
+    public override bool CanConvert(Type type)
     {
-        public override bool CanConvert(Type type)
-        {
-            if (type == typeof(Inventory) || type == typeof(string))
-                return true;
-            else
-                return false;
-        }
+        // Determines whether or not this converter can interact with the type.
+        if (type == typeof(Inventory))
+            return true;
+        else
+            return false;
+    }
 
-        public override JsonConverter CreateConverter(Type type, JsonSerializerOptions options)
-        {
-            Type[] typeArguments = type.GetGenericArguments();
-            Type keyType = typeArguments[0];
-            Type valueType = typeArguments[1];
-
-            JsonConverter converter = (JsonConverter)Activator.CreateInstance(
-                typeof(Inventory).MakeGenericType(
-                    [keyType, valueType]),
-                BindingFlags.Instance | BindingFlags.Public,
-                binder: null,
-                args: [options],
-                culture: null)!;
-
-            return converter;
-        }
+    public override JsonConverter CreateConverter(Type type, JsonSerializerOptions options)
+    {
+        // Seems to pull a new default Inventory object from thin air cast as a JsonConverter.
+        // I do not fully understand how this is useful but it's there for a reason and I do not dare touch it!
+        // credit: https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/converters-how-to
+        return (JsonConverter)Activator.CreateInstance(typeof(Inventory).MakeGenericType())!;
     }
 }
