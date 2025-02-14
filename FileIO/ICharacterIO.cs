@@ -4,6 +4,6 @@ namespace w4_assignment_ksteph.FileIO;
 
 public interface ICharacterIO
 {
-    List<Character> ReadCharacers();
+    List<Character> ReadCharacters();
     void WriteCharacters(List<Character> characters);
 }

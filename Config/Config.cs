@@ -1,4 +1,6 @@
-﻿namespace w4_assignment_ksteph.Config;
+﻿using w4_assignment_ksteph.DataTypes;
+
+namespace w4_assignment_ksteph.Config;
 
 public static class Config
 {
@@ -12,8 +14,15 @@ public static class Config
     public const int CHARACTER_LEVEL_MAX = 20;
 
     /* * * * * * * * * * * * * * * * *
-     *         CSV SETTINGS          *
+     *         FILE SETTINGS         *
      * * * * * * * * * * * * * * * * */
+
+    // Sets the default file type for reading and writing characters. Options: FileType.Json, (Default: FileType.Json.)
+    public const FileType DEFAULT_FILE_TYPE = FileType.Csv;
+
+    /* * * * * * * * * * * * * * * * *
+    *         CSV SETTINGS          *
+    * * * * * * * * * * * * * * * * */
 
     // If true, the program will add double quotes on all values when writing .csv files.(Default: true)
     public const bool CSV_CHARACTER_WRITER_QUOTES_ON_EXPORT = true;

@@ -7,10 +7,23 @@ using System.Globalization;
 using w4_assignment_ksteph.Characters;
 using w4_assignment_ksteph.Config;
 
-public static class CsvCharacterWriter
+public class CsvFileHandler : ICharacterIO
 {
+    private const string CSV_FILE_PATH = "Files/Input.csv";
+
+    // CsvFileHandler is used to convert bwtween characters and csv
+    public List<Character> ReadCharacters()
+    {
+        using StreamReader reader = new(CSV_FILE_PATH);
+        using CsvReader csv = new(reader, CultureInfo.InvariantCulture);
+
+        IEnumerable<Character> characters = csv.GetRecords<Character>();
+
+        return characters.ToList();
+    }
+
     // CsvCharacterWriter is used to export the characters to a text file.
-    public static void Export(List<Character> characters, string path)
+    public void WriteCharacters(List<Character> characters)
     {
         List<Character> outputCharacters = new();
 
@@ -25,7 +38,7 @@ public static class CsvCharacterWriter
             config = new CsvConfiguration(CultureInfo.InvariantCulture);
         }
 
-        using StreamWriter writer = new(path);
+        using StreamWriter writer = new(CSV_FILE_PATH);
         using CsvWriter csvOut = new(writer, config);
 
         csvOut.WriteRecords(characters);
