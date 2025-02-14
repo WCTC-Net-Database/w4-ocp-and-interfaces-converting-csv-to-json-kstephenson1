@@ -1,4 +1,4 @@
-﻿namespace w3_assignment_ksteph.FileIO.Csv;
+﻿namespace w4_assignment_ksteph.FileIO.Csv;
 
 using CsvHelper;
 using System.Collections.Generic;

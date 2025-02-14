@@ -1,6 +1,6 @@
-﻿namespace w3_assignment_ksteph.FileIO;
+﻿namespace w4_assignment_ksteph.FileIO;
 
-using w3_assignment_ksteph.FileIO.Csv;
+using w4_assignment_ksteph.FileIO.Csv;
 using w4_assignment_ksteph.Characters;
 
 public static class CsvManager

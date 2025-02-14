@@ -1,4 +1,4 @@
-﻿using w3_assignment_ksteph.FileIO;
+﻿using w4_assignment_ksteph.FileIO;
 
 namespace w4_assignment_ksteph.Inventories;
 public class Inventory

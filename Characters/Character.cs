@@ -1,7 +1,7 @@
 ﻿namespace w4_assignment_ksteph.Characters;
 
 using CsvHelper.Configuration.Attributes;
-using w3_assignment_ksteph.FileIO.Csv;
+using w4_assignment_ksteph.FileIO.Csv;
 using w4_assignment_ksteph.Inventories;
 using w4_assignment_ksteph.UI;
 
