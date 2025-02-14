@@ -29,9 +29,10 @@ class Program
         {
             UserInterface.MainMenu.Show(); //Shows the main menu.
 
-            int selection = Input.GetInt(1, 5, "Value must be between 1-5"); // Uses a helper file to get an int between 1-5 from the user
+            // Uses a helper file to get an int between 1-{UserInterface.MainMenu.Count()} from the user.
+            int selection = Input.GetInt(1, UserInterface.MainMenu.Count(), $"Value must be between 1-{UserInterface.MainMenu.Count()}"); 
 
-            if (selection == 5) break; // Exits the program if '5' is selected.
+            if (selection == UserInterface.MainMenu.Count()) break; // Exits the program if 'End' is selected.
             UserInterface.MainMenu.Action(selection); // Runs the action of the selected main menu item.
         }
     }

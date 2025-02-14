@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using w4_assignment_ksteph.Characters;
+using w4_assignment_ksteph.FileIO;
 
 namespace w4_assignment_ksteph.UI;
 
@@ -23,7 +24,8 @@ public static class UserInterface
         MainMenu.AddMenuItem(2, "Find Character", "Finds an existing character by name.", CharacterManager.FindCharacter);
         MainMenu.AddMenuItem(3, "New Character", "Creates a new character.", CharacterManager.NewCharacter);
         MainMenu.AddMenuItem(4, "Level Up Chracter", "Levels an existing character.", CharacterManager.LevelUp);
-        MainMenu.AddMenuItem(5, "Exit", "Ends the program.", DoNothing);
+        MainMenu.AddMenuItem(5, "Change File Format", "Changes the file format between Csv and Json", FileManager.SwitchFileType);
+        MainMenu.AddMenuItem(6, "Exit", "Ends the program.", DoNothing);
         MainMenu.BuildTable();
     }
 

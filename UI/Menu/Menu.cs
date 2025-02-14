@@ -37,5 +37,7 @@ public class Menu
 
         AnsiConsole.Write(_table);
     }
+
+    public int Count() => _menuItems.Count; //Returns the number of menu items.
 }
 
