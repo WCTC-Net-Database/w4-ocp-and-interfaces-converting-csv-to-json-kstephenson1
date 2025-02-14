@@ -3,23 +3,24 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>W4_assignment_template</RootNamespace>
+    <RootNamespace>w4_assignment_ksteph</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Files\input.csv" />
-    <None Remove="Files\input.json" />
+    <PackageReference Include="CsvHelper" Version="33.0.1" />
+    <PackageReference Include="Spectre.Console" Version="0.49.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Files\input.csv">
+    <None Update="Files\**">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Files\input.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="FileIO\Json\" />
   </ItemGroup>
 
 </Project>

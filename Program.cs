@@ -1,81 +1,52 @@
-using W4_assignment_template.Interfaces;
-using W4_assignment_template.Models;
-using W4_assignment_template.Services;
+﻿
+using w4_assignment_ksteph.DataHelper;
+using w4_assignment_ksteph.Characters;
+using w4_assignment_ksteph.UI;
 
-namespace W4_assignment_template;
+namespace w4_assignment_ksteph;
 
 class Program
 {
-    static IFileHandler fileHandler;
-    static List<Character> characters;
-
     static void Main()
     {
-        string filePath = "input.csv"; // Default to CSV file
-        fileHandler = new CsvFileHandler(); // Default to CSV handler
-        characters = fileHandler.ReadCharacters(filePath);
-
-        while (true)
-        {
-            Console.WriteLine("Menu:");
-            Console.WriteLine("1. Display Characters");
-            Console.WriteLine("2. Add Character");
-            Console.WriteLine("3. Level Up Character");
-            Console.WriteLine("4. Exit");
-            Console.Write("Enter your choice: ");
-            string choice = Console.ReadLine();
-
-            switch (choice)
-            {
-                case "1":
-                    DisplayAllCharacters();
-                    break;
-                case "2":
-                    AddCharacter();
-                    break;
-                case "3":
-                    LevelUpCharacter();
-                    break;
-                case "4":
-                    fileHandler.WriteCharacters(filePath, characters);
-                    return;
-                default:
-                    Console.WriteLine("Invalid choice. Please try again.");
-                    break;
-            }
-        }
+        Initialization();
+        //Test();
+        Run();
+        End();
     }
 
-    static void DisplayAllCharacters()
+    public static void Initialization()
     {
-        foreach (var character in characters)
-        {
-            Console.WriteLine($"Name: {character.Name}, Class: {character.Class}, Level: {character.Level}, HP: {character.HP}, Equipment: {string.Join(", ", character.Equipment)}");
-        }
+        // The Initialization method runs a few things that need to be done before the main part of the program runs.
+
+        UserInterface.BuildMenus(); // Builds the menus and prepares the user interface tables.
+        CharacterManager.ImportCharacters(); //Imports the caracters from the csv file.
     }
 
-    static void AddCharacter()
+    public static void Run()
     {
-        // TODO: Implement logic to add a new character
-        // Prompt for character details (name, class, level, hit points, equipment)
-        // Add the new character to the characters list
+        while (true) // Will run until exit is selected
+        {
+            UserInterface.MainMenu.Show(); //Shows the main menu.
+
+            int selection = Input.GetInt(1, 5, "Value must be between 1-5"); // Uses a helper file to get an int between 1-5 from the user
+
+            if (selection == 5) break; // Exits the program if '5' is selected.
+            UserInterface.MainMenu.Action(selection); // Runs the action of the selected main menu item.
+        }
     }
 
-    static void LevelUpCharacter()
+    public static void End()
     {
-        Console.Write("Enter the name of the character to level up: ");
-        string nameToLevelUp = Console.ReadLine();
+        // Exports the character list back to csv formation and ends the program.
 
-        var character = characters.Find(c => c.Name.Equals(nameToLevelUp, StringComparison.OrdinalIgnoreCase));
-        if (character != null)
-        {
-            // TODO: Implement logic to level up the character
-            // character.Level++;
-            // Console.WriteLine($"Character {character.Name} leveled up to level {character.Level}!");
-        }
-        else
-        {
-            Console.WriteLine("Character not found.");
-        }
+        CharacterManager.ExportCharacters(); //Outputs the characters into the csv file.
+        UserInterface.ExitMenu.Show(true); //Shows the exit menu and leaves the program.
     }
+
+    //public static void Test() // for testing purposes only.
+    //{
+       
+    //}
+
 }
