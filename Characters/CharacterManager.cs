@@ -13,7 +13,6 @@ using w4_assignment_ksteph.UI;
 
 public static class CharacterManager
 {
-    private const string CHARACTER_PATH = "Files/input.csv"; // The path of the character csv file
     public static List<Character> Characters { get; set; } = new(); // A list of characters objects for reference
 
     public static void ImportCharacters() //Imports the characters from the csv file and stores them.

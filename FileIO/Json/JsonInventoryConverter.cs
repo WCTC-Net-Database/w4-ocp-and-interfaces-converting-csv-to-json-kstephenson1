@@ -9,7 +9,7 @@ public class JsonInventoryConverter : JsonConverter<Inventory>
 {
     public override Inventory? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        return InventorySerializer.Deserialize(reader.GetString());
+        return InventorySerializer.Deserialize(reader.GetString()!);
     }
 
     public override void Write(Utf8JsonWriter writer, Inventory inventory, JsonSerializerOptions options)
