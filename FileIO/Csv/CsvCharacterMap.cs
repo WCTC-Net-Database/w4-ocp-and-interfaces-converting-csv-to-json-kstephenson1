@@ -13,6 +13,6 @@ public class CsvCharacterMap : ClassMap<Characters.Character>
         Map(character => character.Class);
         Map(character => character.Level);
         Map(character => character.HitPoints);
-        Map(character => character.Inventory).TypeConverter(new InventoryConverter());
+        Map(character => character.Inventory).TypeConverter(new CsvInventoryConverter());
     }
 }
