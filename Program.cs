@@ -39,9 +39,9 @@ class Program
 
     public static void End()
     {
-        // Exports the character list back to csv formation and ends the program.
+        // Exports the character list back to the chosen file format and ends the program.
 
-        CharacterManager.ExportCharacters(); //Outputs the characters into the csv file.
+        CharacterManager.ExportCharacters(); //Outputs the characters into the chosen file format.
         UserInterface.ExitMenu.Show(true); //Shows the exit menu and leaves the program.
     }
 
