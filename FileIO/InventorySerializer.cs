@@ -18,6 +18,26 @@ public class InventorySerializer
         return ToString(ToItemList(inventory)!);
     }
 
+    public static Inventory DeserializeArray(List<string> itemArray)     // Converts String into Inventories
+    {
+        Inventory inventory = new();
+        foreach (string item in itemArray)
+        {
+            inventory.Items!.Add(new(item));
+        }
+        return inventory;
+    }
+
+    public static List<string>? SerializeArray(Inventory inventory)            // Converts Inventories into String
+    {
+        List<string> itemArray = new();
+        foreach (Item item in inventory.Items!)
+        {
+            itemArray.Add(item.ToString());
+        }
+        return itemArray;
+    }
+
     private static List<Item> ToItemList(string itemString)         //Converts String into List<Item>
     {
         List<Item> itemList = [];

@@ -13,8 +13,8 @@ public class JsonFileHandler : ICharacterIO
 
     public JsonFileHandler()
     {
-        _options.Converters.Add(new JsonInventoryConverter());   // Using a custom converter to convert json string -> Inventory
-        _options.Converters.Add(new JsonIntConverter());         // Using a custom converter to convert json string -> int
+        _options.Converters.Add(new JsonStringArrayConverter());   // Using a custom converter to convert json string -> Inventory
+        //_options.Converters.Add(new JsonIntConverter());         // Using a custom converter to convert json string -> int
         _options.WriteIndented = true;                           // Writes the json file in indented format.
     }
 
