@@ -16,16 +16,16 @@ public static class UserInterface
         BuildExitMenu();
     }
 
-    private static void BuildMainMenu() // Builds the main menu.  The main menu stores an index, option, description, and an action.
+    private static void BuildMainMenu() // Builds the main menu.  The main menu stores an index (AutoNumber), option, description, and an action.
                                         // Used for quick and easy reference later when these menus are shown and the selection action is executed.
     {
         MainMenu = new();
-        MainMenu.AddMenuItem(1, "Display All Characters", "Displays all characters and items in their inventory.", CharacterManager.DisplayAllCharacters);
-        MainMenu.AddMenuItem(2, "Find Character", "Finds an existing character by name.", CharacterManager.FindCharacter);
-        MainMenu.AddMenuItem(3, "New Character", "Creates a new character.", CharacterManager.NewCharacter);
-        MainMenu.AddMenuItem(4, "Level Up Chracter", "Levels an existing character.", CharacterManager.LevelUp);
-        MainMenu.AddMenuItem(5, "Change File Format", "Changes the file format between Csv and Json", FileManager.SwitchFileType);
-        MainMenu.AddMenuItem(6, "Exit", "Ends the program.", DoNothing);
+        MainMenu.AddMenuItem("Display All Characters", "Displays all characters and items in their inventory.", CharacterManager.DisplayAllCharacters);
+        MainMenu.AddMenuItem("Find Character", "Finds an existing character by name.", CharacterManager.FindCharacter);
+        MainMenu.AddMenuItem("New Character", "Creates a new character.", CharacterManager.NewCharacter);
+        MainMenu.AddMenuItem("Level Up Chracter", "Levels an existing character.", CharacterManager.LevelUp);
+        MainMenu.AddMenuItem("Change File Format", "Changes the file format between Csv and Json", FileManager.SwitchFileType);
+        MainMenu.AddMenuItem("Exit", "Ends the program.", DoNothing);
         MainMenu.BuildTable();
     }
 
