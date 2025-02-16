@@ -6,9 +6,9 @@ public class MainMenu : Menu
 {
     // The MainMenu contains items that have 4 parts, the index, the name, the description, and the action that
     // is completed when that menu item is chosen.
-    public void AddMenuItem(int index, string name, string desc, Action action)
+    public void AddMenuItem(string name, string desc, Action action)
     {
-        _menuItems.Add(new MainMenuItem(index, name, desc, action));
+        _menuItems.Add(new MainMenuItem(_menuItems.Count() + 1, name, desc, action));
     }
 
     public override void BuildTable()
