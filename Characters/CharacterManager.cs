@@ -32,7 +32,6 @@ public static class CharacterManager
         foreach (Character character in CharacterManager.Characters)
         {
             character.DisplayCharacterInfo();
-
         }
     }
 
@@ -106,7 +105,6 @@ public static class CharacterManager
         else
         {
             AnsiConsole.MarkupLine($"[Red]No characters found with the name {characterName}[/]\n");
-
         }
     }
     public static void AddCharacter(Character character) // Adds a new character to the stored characters list.
