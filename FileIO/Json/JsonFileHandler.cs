@@ -13,15 +13,14 @@ public class JsonFileHandler : ICharacterIO
 
     public JsonFileHandler()
     {
-        _options.Converters.Add(new JsonStringArrayConverter());   // Using a custom converter to convert json string -> Inventory
-        //_options.Converters.Add(new JsonIntConverter());         // Using a custom converter to convert json string -> int
-        _options.WriteIndented = true;                           // Writes the json file in indented format.
+        _options.Converters.Add(new JsonInventoryConverter());    // Using a custom converter to convert json string -> Inventory
+        _options.WriteIndented = true;                              // Writes the json file in indented format.
     }
 
     public List<Character> ReadCharacters()
     {
 
-        using (StreamReader reader = new(JSON_FILE_PATH))       // reads from the json file and returns a list of characters.
+        using (StreamReader reader = new(JSON_FILE_PATH))           // reads from the json file and returns a list of characters.
         {
             string json = reader.ReadToEnd();
             return JsonSerializer.Deserialize<List<Character>>(json, _options)!;
@@ -30,7 +29,7 @@ public class JsonFileHandler : ICharacterIO
 
     public void WriteCharacters(List<Character> characters)
     {
-        using (StreamWriter writer = new(JSON_FILE_PATH))       // Takes a list of characters and writes to the json file
+        using (StreamWriter writer = new(JSON_FILE_PATH))           // Takes a list of characters and writes to the json file
         {
             writer.WriteLine(JsonSerializer.Serialize<List<Character>>(characters, _options));
         }
