@@ -23,16 +23,11 @@ public class JsonInventoryConverter : JsonConverter<Inventory>
         {
             if (reader.TokenType == JsonTokenType.EndArray)
             {
-                Inventory inventory = new();
-                foreach (string item in itemSet)
-                {
-                    inventory.Items.Add(new(item));
-                }
-                return inventory;
+                return InventorySerializer.DeserializeList(itemSet);
             }
             else if (reader.TokenType == JsonTokenType.String)
             {
-                itemSet.Add((reader.GetString()));
+                itemSet.Add(reader.GetString()!);
             }
             else
             {
@@ -44,12 +39,13 @@ public class JsonInventoryConverter : JsonConverter<Inventory>
 
     public override void Write(Utf8JsonWriter writer, Inventory inventory, JsonSerializerOptions options)
     {
-        List<string> items = new();
         writer.WriteStartArray();
-        foreach (Item item in inventory.Items)
+
+        foreach (string item in InventorySerializer.SerializeList(inventory)!)
         {
-            writer.WriteStringValue(item.ID);
+            writer.WriteStringValue(item);
         }
+
         writer.WriteEndArray();
     }
 
