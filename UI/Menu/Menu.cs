@@ -11,7 +11,7 @@ public class Menu
 
     public virtual void AddMenuItem(string name) // Adds a new menu item to the menu.
     {
-        _menuItems.Add(new MenuItem(_menuItems.Count() + 1, name));
+        _menuItems.Add(new MenuItem(_menuItems.Count + 1, name));
     }
 
     public virtual void BuildTable() // Builds and stores a custom table for the menu using the menu items stored.

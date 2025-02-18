@@ -8,7 +8,7 @@ public class MainMenu : Menu
     // is completed when that menu item is chosen.
     public void AddMenuItem(string name, string desc, Action action)
     {
-        _menuItems.Add(new MainMenuItem(_menuItems.Count() + 1, name, desc, action));
+        _menuItems.Add(new MainMenuItem(_menuItems.Count + 1, name, desc, action));
     }
 
     public override void BuildTable()
