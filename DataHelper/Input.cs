@@ -1,4 +1,6 @@
-﻿namespace w4_assignment_ksteph.DataHelper;
+﻿using System.Diagnostics;
+
+namespace w4_assignment_ksteph.DataHelper;
 
 // The DataHelper.Input class contains a few methods and overrides that assist in gaining input from the user that includes different levels of input validation.
 class Input
@@ -237,7 +239,7 @@ class Input
     /// </summary>
     /// <param name="prompt">Question asked to the user.</param>
     /// <returns>returns "Y" or "N" dpending on user input.</returns>
-    public static string GetYN(string prompt)
+    public static bool GetYN(string prompt)
     {
         List<string> allowedResponsesList = ["y", "n"];
         string? response;
@@ -268,15 +270,20 @@ class Input
             break;
         } while (true);
 
-        return response!.ToUpper();
+        return response!.ToUpper() switch
+        {
+            "Y" => true,
+            "N" => false,
+            _ => throw new UnreachableException("Unreachable response triggered. (\"y\" or \"n\" allowed.")
+        };
     }
 
     private static bool IsResponseAllowed(string? response, List<string> allowedResponsesList, out string errorMessage)
     {
         foreach (string allowedResponse in allowedResponsesList)
         {
-            if (response == allowedResponse)
-            {
+            if (string.Equals(response, allowedResponse, StringComparison.InvariantCultureIgnoreCase))
+            { 
                 errorMessage = " Please enter an allowed value.";
                 return true;
             }
@@ -287,54 +294,34 @@ class Input
 
     private static bool IsEmpty(string? value)
     {
-        if (value == "")
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return (value == "");
     }
 
     private static bool IsEmpty(string? value, out string errorMessage)
     {
-        if (value == "")
+        errorMessage = IsEmpty(value) switch
         {
-            errorMessage = " The value you entered was empty.";
-            return true;
-        }
-        else
-        {
-            errorMessage = " The value you entered was not empty.";
-            return false;
-        }
+            true => " The value you entered was empty.",
+            false => " The value you entered was not empty."
+        };
+
+        return IsEmpty(value);
     }
 
     private static bool IsNull(string? value)
     {
-        if (value == null)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return (value == null);
     }
 
     private static bool IsNull(string? value, out string errorMessage)
     {
-        if (value == null)
+        errorMessage = IsNull(value) switch
         {
-            errorMessage = " The value you entered was null.";
-            return true;
-        }
-        else
-        {
-            errorMessage = " The value you entered was not null.";
-            return false;
-        }
+            true => " The value you entered was null.",
+            false => " The value you entered was not null."
+        };
+        
+        return IsNull(value);
     }
 
     private static void InvalidValue(string errorMessage)
