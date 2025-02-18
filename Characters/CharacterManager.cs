@@ -80,7 +80,7 @@ public static class CharacterManager
 
     private static Character? FindCharacterByName(string name) // Finds and returns a character based on input.
     {
-        return Characters.Where(character => character.Name.ToUpper() == name.ToUpper()).FirstOrDefault();
+        return Characters.Where(character => String.Equals(character.Name, name, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
     }
 
     public static void LevelUp() //Asks the user for a character to level up, then displays that character.
