@@ -38,11 +38,6 @@ public class Character
         Inventory = inventory;
     }
 
-    public void LevelUp() // Levels a character up by one.
-    {
-        Level++;
-    }
-
     public void DisplayCharacterInfo() => CharacterUI.DisplayCharacterInfo(this); // Displays the character info.
 
     public override string ToString()

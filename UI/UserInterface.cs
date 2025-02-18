@@ -21,9 +21,9 @@ public static class UserInterface
     {
         MainMenu = new();
         MainMenu.AddMenuItem("Display All Characters", "Displays all characters and items in their inventory.", CharacterManager.DisplayAllCharacters);
-        MainMenu.AddMenuItem("Find Character", "Finds an existing character by name.", CharacterManager.FindCharacter);
-        MainMenu.AddMenuItem("New Character", "Creates a new character.", CharacterManager.NewCharacter);
-        MainMenu.AddMenuItem("Level Up Chracter", "Levels an existing character.", CharacterManager.LevelUp);
+        MainMenu.AddMenuItem("Find Character", "Finds an existing character by name.", CharacterFunctions.FindCharacter);
+        MainMenu.AddMenuItem("New Character", "Creates a new character.", CharacterFunctions.NewCharacter);
+        MainMenu.AddMenuItem("Level Up Chracter", "Levels an existing character.", CharacterFunctions.LevelUp);
         MainMenu.AddMenuItem("Change File Format", "Changes the file format between Csv and Json", FileManager.SwitchFileType);
         MainMenu.AddMenuItem("Exit", "Ends the program.", DoNothing);
         MainMenu.BuildTable();
