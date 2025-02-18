@@ -11,7 +11,7 @@ public class FileManager
 
     private static FileType _fileType = Config.DEFAULT_FILE_TYPE;
 
-    private ICharacterIO GetFileType() // Checks to see what the current file type is set to and execute the proper file system.
+    private static ICharacterIO GetFileType() // Checks to see what the current file type is set to and execute the proper file system.
     {
         return _fileType switch
         {
