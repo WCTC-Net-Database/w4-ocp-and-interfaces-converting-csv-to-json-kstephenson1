@@ -18,7 +18,7 @@ public class InventorySerializer
         return ToString(ToItemList(inventory)!);
     }
 
-    public static Inventory DeserializeArray(List<string> itemArray)     // Converts String into Inventories
+    public static Inventory DeserializeList(List<string> itemArray)     // Converts String into Inventories
     {
         Inventory inventory = new();
         foreach (string item in itemArray)
@@ -28,12 +28,12 @@ public class InventorySerializer
         return inventory;
     }
 
-    public static List<string>? SerializeArray(Inventory inventory)            // Converts Inventories into String
+    public static List<string>? SerializeList(Inventory inventory)            // Converts Inventories into String
     {
         List<string> itemArray = new();
         foreach (Item item in inventory.Items!)
         {
-            itemArray.Add(item.ToString());
+            itemArray.Add(item.ID);
         }
         return itemArray;
     }
